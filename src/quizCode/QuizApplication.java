@@ -5,7 +5,7 @@ import java.util.*; // For Scanner and ArrayList
 // Main class
 public class QuizApplication {
 
-    // Question class to store question data
+	// Question class to store question data
     static class Question {
         String questionText; // Question content
         //array of Strings
@@ -24,8 +24,8 @@ public class QuizApplication {
     public static void main(String[] args) {
         // Scanner for user input
         Scanner scanner = new Scanner(System.in);
-
         // Create a list to store quiz questions
+        
         ArrayList<Question> quizQuestions = new ArrayList<>();
 
         // Adding questions to the quiz
@@ -35,6 +35,9 @@ public class QuizApplication {
                 new String[]{"1. Python", "2. Java", "3. C++", "4. Kotlin"}, 3));
         quizQuestions.add(new Question("What is 5 + 3?",
                 new String[]{"1. 5", "2. 8", "3. 9", "4. 7"}, 1));
+        //add a fourth questions to the ArrayList
+        quizQuestions.add(new Question("What is the second book of the Bible?",
+        		new String[] {"1. Numbers", "2. Exodus", "3. Genesis", "4. Moses"}, 1));
 
         // Variable to keep track of the user's score
         int score = 0;
