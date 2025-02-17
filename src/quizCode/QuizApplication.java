@@ -6,7 +6,7 @@ import java.util.*; // For Scanner and ArrayList
 public class QuizApplication {
 
 	// Question class to store question data
-    static class Question {
+     /*static class Question {
         String questionText; // Question content
         //array of Strings
         String[] options;    // Multiple-choice options
@@ -19,7 +19,7 @@ public class QuizApplication {
             this.options = options;
             this.correctOption = correctOption;
         }
-    }
+    }*/
 
     public static void main(String[] args) {
         // Scanner for user input
@@ -45,10 +45,10 @@ public class QuizApplication {
         // Iterating over the list of questions
         for (Question question : quizQuestions) {
             // Display the question
-            System.out.println(question.questionText);
+            System.out.println(question.getQuestionText());
 
             // Display the options
-            for (String option : question.options) {
+            for (String option : question.getOptions()) {
                 System.out.println(option);
             }
 
@@ -57,19 +57,19 @@ public class QuizApplication {
             int userAnswer = scanner.nextInt() - 1; // Convert to 0-based index
 
             // Check if the answer is correct
-            if (userAnswer == question.correctOption) {
+            if (userAnswer == question.getCorrectOption()) {
                 System.out.println("Correct!\n");
                 score++; // Increment score for correct answer
             } else {
                 System.out.println("Wrong! The correct answer is: "
-                        + question.options[question.correctOption] + "\n");
+                        + question.getOptions()[question.getCorrectOption()] + "\n");
             }
-        }
+        }//end of for
 
         // Display final score
         System.out.println("Quiz Over! Your final score is: " + score + "/" + quizQuestions.size());
 
         // Close the scanner to avoid resource leaks
         scanner.close();
-    }
+    }//end of main
 }
