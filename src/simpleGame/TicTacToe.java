@@ -3,13 +3,17 @@ package simpleGame;
 import java.util.Scanner;
 
 public class TicTacToe {
-
+	
+//Keep track of scores for both players	
+static int scoreX = 0;
+static int scoreO = 0;
     // Define a 3x3 board for the game
     static char[][] board = {
         {' ', ' ', ' '},
         {' ', ' ', ' '},
         {' ', ' ', ' '}
     };
+    
 
     public static void main(String[] args) {
         // Create a Scanner object to get user input
@@ -38,6 +42,12 @@ public class TicTacToe {
 
                 // Check if the current player has won the game
                 gameWon = checkWin(currentPlayer);
+                
+                //Checks if the player has win if they have count score and print it out
+                if(gameWon) {
+                	System.out.println("Player: " + currentPlayer + " Wins!");
+                	updateScore(currentPlayer);//Update the score
+                }
 
                 // Switch to the next player
                 currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
@@ -54,6 +64,7 @@ public class TicTacToe {
         if (gameWon) {
             // The previous player is the winner since currentPlayer has already switched
             System.out.println("Player " + ((currentPlayer == 'X') ? 'O' : 'X') + " wins!");
+            
         } else {
             // If no one wins, it's a draw
             System.out.println("It's a draw!");
@@ -82,7 +93,27 @@ public class TicTacToe {
     // Method to check if a move is valid
     public static boolean isValidMove(int row, int col) {
         // A move is valid if it's within the board boundaries and the cell is empty
-        return row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ';
+        //return row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ';
+        
+    	//Checks if row is out of bounds
+        if(row < 0 || row >= 3) {
+        	System.out.println("Row must be between 0 and 2");
+        	return false;
+        }
+        
+      //Checks if column is out of bounds
+        if(col < 0 || col >= 3) {
+        	System.out.println("Column must be between 0 and 2");
+        	return false;
+        }
+        
+      //Checks if cell is empty
+        if(board[row][col] != ' ') {
+        	System.out.println("The cell already taken");
+        	return false;
+        }
+        
+       return true;
     }
 
     // Method to check if the board is full (indicating a draw)
@@ -106,7 +137,7 @@ public class TicTacToe {
                 (board[0][i] == player && board[1][i] == player && board[2][i] == player)) { // Column check
                 return true;
             }
-        }
+        }//end for
 
         // Check both diagonals for a win
         if ((board[0][0] == player && board[1][1] == player && board[2][2] == player) || // Top-left to bottom-right diagonal
@@ -117,6 +148,22 @@ public class TicTacToe {
         // If no winning condition is met, return false
         return false;
     }
+    
+    //Method that counts the number of wins and loses of each player
+    public static void updateScore(char winner) {
+    	
+    	if(winner == 'X') {
+    		scoreX++;
+    	}
+    	
+    	if(winner == 'O') {
+    		scoreO++;
+    	}
+    	
+    	//Display the Scores for each player
+    	System.out.println("Score - X: " + scoreX + " Score - O " + scoreO);
+    }
+    
 }
 
 
