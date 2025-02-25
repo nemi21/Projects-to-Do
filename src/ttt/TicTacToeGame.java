@@ -76,7 +76,18 @@ public class TicTacToeGame {
 	}
 	
 	private void printBoard() {
+		System.out.println(" 0 1 2");//print out the column numbers
 		
+		for(int i = 0; i < 3; i++) {
+			System.out.println(i + " "); //Prints out the row numbers
+			for(int j = 0; j < 3; j++) {
+				System.out.println(gameBoard[i][j]);//Prints the actual content X and O and empty space
+				if(j < 2) System.out.println("|");
+			}//end of for
+			
+			System.out.println();//Move to the next line after printing a row
+			if(i < 2) System.out.println(" -----");//Prints the horizontal separators between rows
+		}//end of for
 	}
 	
 	
