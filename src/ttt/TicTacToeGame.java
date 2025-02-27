@@ -9,9 +9,12 @@ public class TicTacToeGame {
 		{' ', ' ', ' '},
 		{' ', ' ', ' '}
 	};
-	//
 	
+	Player currentPlayer; 
 	
+	 public TicTacToeGame() {
+		 
+	 }
 	
 	
 	//Method that checks if the current player has won the game
