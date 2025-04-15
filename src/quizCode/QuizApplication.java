@@ -96,7 +96,25 @@ public class QuizApplication {
 
         // Display final score
         System.out.println("Quiz Over! Your final score is: " + score + "/" + quizQuestions.size());
-
+        
+        //Calculate Percentage Score
+        double percentage = ((double) score / quizQuestions.size()) * 100;
+        
+        //Display score percentage with 1 decimal place
+        System.out.printf("Your score: %.1f%%\n", percentage);
+        
+        //Give Comments based on the grade of Quiz
+        if(percentage == 100) {
+        	System.out.println("Perfect! you're a quiz master!");
+        }else if(percentage  >= 75) {
+        	System.out.println("Great Job! You know your stuff.");
+        }else if(percentage >= 50) {
+        	System.out.println("Not bad! A little more practice and you'll ace it.");
+        }else {
+        	System.out.println("Keep learning! You'll get better.");
+        }
+        
+        
         // Close the scanner to avoid resource leaks
         scanner.close();
     }//end of main
