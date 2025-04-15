@@ -52,10 +52,38 @@ public class QuizApplication {
                 System.out.println(option);
             }
 
-            // Prompt user for their answer
-            System.out.print("Enter your choice (1-4): ");
-            int userAnswer = scanner.nextInt() - 1; // Convert to 0-based index
+         //Temporary variable to hold user input before validation
+            int tempAns;
+         //Final validated user answer (0-based index)
+            int userAnswer = -1;
 
+            // Loop until the user enters a valid input
+            while (true) {
+                // Prompt user for their answer
+                System.out.print("Enter your choice (1-4): ");
+
+                // Check if the next input is an integer
+                if (scanner.hasNextInt()) {
+                    tempAns = scanner.nextInt(); // Read the integer input
+
+                    // Check if the input is within the valid range
+                    if (tempAns >= 1 && tempAns <= 4) {
+                        userAnswer = tempAns - 1; // Convert to 0-based index and store it
+                        break; // Exit loop since we got valid input
+                    } else {
+                        // Inform the user if the number is out of range
+                        System.out.println("Please enter a number between 1 and 4.");
+                    }
+                } else {
+                    // Inform the user if the input was not a number
+                    System.out.println("Invalid input. Please enter a number between 1 and 4.");
+                }
+
+                // Clear the invalid input (important when non-integer input is entered)
+                scanner.nextLine();
+            } // end of while
+
+            
             // Check if the answer is correct
             if (userAnswer == question.getCorrectOption()) {
                 System.out.println("Correct!\n");
